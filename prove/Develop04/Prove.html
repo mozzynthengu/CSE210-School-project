@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Nthengu - W04 Prove: Articulate</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #fff;
+      
+    }
+
+    h1, h2, h3 {
+      color: #007ACC;
+    }
+
+    h1 {
+      border-bottom: 2px solid #007ACC;
+      padding-bottom: 5px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 1.05em;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 1em;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007ACC;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+
+    #breatheBox {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 15px;
+      padding: 20px;
+      background-color: #e0f7fa;
+      border-left: 5px solid #007ACC;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daniel Nthengu - W04 Prove: Articulate</h1>
+
+  <h2>1. What is Inheritance?</h2>
+  <p>
+    Inheritance is a concept in object-oriented programming where one class (called the child or derived class)
+    gets the features (like variables and methods) from another class (called the parent or base class). 
+    It helps us avoid repeating code. For example, if we have shared features like <code>name</code>, 
+    <code>description</code>, or a <code>Run()</code> method, we can put them in one base class and let 
+    other classes reuse them.
+  </p>
+
+  <h2>2. What is a Benefit of Inheritance?</h2>
+  <p>
+    A big benefit of inheritance is code reuse. It lets us write common logic once in a base class and reuse 
+    it across multiple child classes. This makes code cleaner, easier to update, and easier to test.
+  </p>
+
+  <h2>3. Application of Inheritance</h2>
+  <p>
+    In my mindfulness program, I had three activities: Breathing, Reflecting, and Listing. All of them needed
+    to show a start message, ask for duration, and show a spinner animation. Instead of writing that in each 
+    activity, I created a base class <code>Activity</code> to handle it. Then each specific activity inherited 
+    from <code>Activity</code> and added its own unique behavior. This helped reduce duplicate code and 
+    made the program easy to maintain.
+  </p>
+
+  <h2>4. Code Example</h2>
+  <h3>Base Class - <code>Activity.cs</code></h3>
+  <pre>
+public class Activity
+{
+    protected string _name;
+    protected string _description;
+
+    public Activity(string name, string description)
+    {
+        _name = name;
+        _description = description;
+    }
+
+    public void Run()
+    {
+        DisplayStartMessage();
+        // ... animation, etc.
+    }
+
+    protected void DisplayStartMessage()
+    {
+        Console.WriteLine($"Starting {_name} activity...");
+    }
+}
+  </pre>
+
+  <h3>Child Class - <code>BreathingActivity.cs</code></h3>
+  <pre>
+public class BreathingActivity : Activity
+{
+    public BreathingActivity()
+        : base("Breathing", "This activity helps you relax by breathing in and out.")
+    {
+    }
+
+    public void Run()
+    {
+        base.Run(); // Use the base class method
+        for (int i = 0; i &lt; 3; i++)
+        {
+            Console.WriteLine("Breathe in...");
+            Thread.Sleep(2000);
+            Console.WriteLine("Breathe out...");
+            Thread.Sleep(2000);
+        }
+    }
+}
+  </pre>
+
+  <h2>5. Personal Reflection</h2>
+  <p>
+    What made this project fun for me was turning the breathing activity into a relaxing mini-game. 
+    Watching the "breathe in and out" messages with pauses was surprisingly fun and calming. It showed 
+    me how code can affect how people feel.
+  </p>
+
+  <button onclick="startBreathing()">Try Breathing Activity</button>
+  <div id="breatheBox">Ready to breathe...</div>
+
+  <script>
+    const breatheBox = document.getElementById('breatheBox');
+    const messages = ["Breathe in...", "Hold...", "Breathe out...", "Hold..."];
+    let i = 0;
+
+    function startBreathing() {
+      breatheBox.style.display = 'block';
+      i = 0;
+      breatheStep();
+    }
+
+    function breatheStep() {
+      if (i >= messages.length * 3) {
+        breatheBox.innerText = "Well done! That was calming!";
+        return;
+      }
+
+      breatheBox.innerText = messages[i % messages.length];
+      i++;
+
+      setTimeout(breatheStep, 2000);
+    }
+  </script>
+</body>
+</html>
