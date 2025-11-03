@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
+// -------------------- Program Class --------------------
 class Program
 {
     static string usersFile = "users.json";
@@ -281,7 +283,12 @@ class Program
     // -------------------- File Persistence --------------------
     static void SaveData<T>(string filename, List<T> data)
     {
-        string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            ReferenceHandler = ReferenceHandler.Preserve
+        };
+        string json = JsonSerializer.Serialize(data, options);
         File.WriteAllText(filename, json);
     }
 
@@ -290,7 +297,12 @@ class Program
         if (!File.Exists(filename))
             return new List<T>();
 
+        var options = new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.Preserve
+        };
+
         string json = File.ReadAllText(filename);
-        return JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+        return JsonSerializer.Deserialize<List<T>>(json, options) ?? new List<T>();
     }
 }

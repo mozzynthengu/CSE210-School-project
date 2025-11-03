@@ -1,0 +1,24 @@
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "ProductType": "eggs",
+      "Quantity": 30,
+      "Date": "2025-11-03T05:30:00.4252799-07:00",
+      "Customer": {
+        "$id": "3",
+        "Name": "banabas",
+        "Contact": "555-1234",
+        "Purchases": {
+          "$id": "4",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
