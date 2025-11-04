@@ -1,0 +1,25 @@
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "Username": "nthengu",
+      "Password": "daniel03"
+    },
+    {
+      "$id": "3",
+      "Username": "daniel",
+      "Password": "daniel03"
+    },
+    {
+      "$id": "4",
+      "Username": "danny",
+      "Password": "maxi1"
+    },
+    {
+      "$id": "5",
+      "Username": "",
+      "Password": ""
+    }
+  ]
+}

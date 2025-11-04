@@ -1,10 +1,10 @@
-using System;
-
 public class FeedInventory
 {
     public string FeedName { get; set; }
     public double Quantity { get; set; }
     public double ReorderLevel { get; set; }
+
+    public FeedInventory() { }  // Needed for JSON deserialization
 
     public FeedInventory(string feedName, double quantity, double reorderLevel)
     {

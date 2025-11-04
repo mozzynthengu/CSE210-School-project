@@ -6,6 +6,8 @@ public class HealthRecord
     public string Symptoms { get; set; }
     public string Treatment { get; set; }
 
+    public HealthRecord() { }  // Needed for JSON deserialization
+
     public HealthRecord(DateTime date, string symptoms, string treatment)
     {
         Date = date;

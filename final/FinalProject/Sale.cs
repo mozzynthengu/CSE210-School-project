@@ -7,6 +7,8 @@ public class Sale
     public DateTime Date { get; set; }
     public Customer Customer { get; set; }
 
+    public Sale() { }  // Needed for JSON deserialization
+
     public Sale(string productType, int quantity, DateTime date, Customer customer)
     {
         ProductType = productType;

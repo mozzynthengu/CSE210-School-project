@@ -1,0 +1,62 @@
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "ProductType": "eggs",
+      "Quantity": 30,
+      "Date": "2025-11-03T15:25:30.2570302-07:00",
+      "Customer": {
+        "$id": "3",
+        "Name": "hanifa",
+        "Contact": "o742737463",
+        "Purchases": {
+          "$id": "4",
+          "$values": [
+            {
+              "$ref": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$id": "5",
+      "ProductType": "eggs",
+      "Quantity": 46,
+      "Date": "2025-11-03T16:15:25.9834468-07:00",
+      "Customer": {
+        "$id": "6",
+        "Name": "manuel",
+        "Contact": "123-4566",
+        "Purchases": {
+          "$id": "7",
+          "$values": [
+            {
+              "$ref": "5"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$id": "8",
+      "ProductType": "eggs",
+      "Quantity": 30,
+      "Date": "2025-11-03T19:28:51.1275486-07:00",
+      "Customer": {
+        "$id": "9",
+        "Name": "joel",
+        "Contact": "0742737465",
+        "Purchases": {
+          "$id": "10",
+          "$values": [
+            {
+              "$ref": "8"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
